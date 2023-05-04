@@ -4,10 +4,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.ResourceBundle;
 
-import javafx.application.Application;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -50,7 +49,10 @@ public class TournamentSelectionStudentController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         StudentChoiceController s= new StudentChoiceController();
-        ArrayList<Tournament> tournamentList = s.getSelectedTournaments();
+        ObservableList<Tournament> tournamentList = s.getSelectedTournaments();
+        if (tournamentList.size() == 0) {
+            System.out.println("empty");
+        }
         for (Tournament tournament : tournamentList) {
             Button button = tournament.getButton();
             button.setText("Register");
@@ -81,12 +83,13 @@ public class TournamentSelectionStudentController implements Initializable {
         typeColumn.setCellValueFactory(new PropertyValueFactory<Tournament,String>("type"));
         sportColumn.setCellValueFactory(new PropertyValueFactory<Tournament,String>("sport"));
         roundsColumn.setCellValueFactory(new PropertyValueFactory<Tournament,Integer>("rounds"));
-        startDateColumn.setCellValueFactory(new PropertyValueFactory<Tournament,LocalDate>("starttDate"));
+        startDateColumn.setCellValueFactory(new PropertyValueFactory<Tournament,LocalDate>("startDate"));
         endDateColumn.setCellValueFactory(new PropertyValueFactory<Tournament,LocalDate>("endDate"));
-        tableView.sort();
+        tableView.setItems(tournamentList);
         startDateColumn.setSortType(TableColumn.SortType.DESCENDING);
         tableView.getSortOrder().add(startDateColumn);
         tableView.sort();
+        System.out.println("innitialized the grid");
 
     }
 
