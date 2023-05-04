@@ -1,12 +1,18 @@
 package com.example.swe_206;
 
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.Date;
 
 import javafx.scene.control.Button;
 
 public class Tournament implements Serializable {
     String name;
     String type;
+    String sport;
+    int rounds;
+    LocalDate startDate;
+    LocalDate endDate;
     Button button;
     Tournament() {
         name = "example";
