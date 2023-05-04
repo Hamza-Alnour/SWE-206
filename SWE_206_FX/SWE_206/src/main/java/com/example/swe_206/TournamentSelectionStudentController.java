@@ -44,7 +44,7 @@ public class TournamentSelectionStudentController implements Initializable {
     @FXML
     private TableColumn<Tournament, String> typeColumn;
 
-    private Tournament selectedTournament;
+    private static Tournament selectedTournament;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -64,12 +64,12 @@ public class TournamentSelectionStudentController implements Initializable {
                     if (tournament.getType().equals("Individual")) {
                         FXMLLoader fxmlLoaderRegisterScene = new FXMLLoader(HelloApplication.class.getResource("Register Scene.fxml"));
                         Scene registerScene;
-                        registerScene = new Scene(fxmlLoaderRegisterScene.load(), 320, 240);
+                        registerScene = new Scene(fxmlLoaderRegisterScene.load(), 600, 600);
                         stage.setScene(registerScene);
                     } else {
                         FXMLLoader fxmlLoaderTeamForum = new FXMLLoader(HelloApplication.class.getResource("TeamForum.fxml"));
                         Scene teamForumScene;
-                        teamForumScene = new Scene(fxmlLoaderTeamForum.load(), 320, 240);
+                        teamForumScene = new Scene(fxmlLoaderTeamForum.load(), 600, 600);
                         stage.setScene(teamForumScene);
                     }
                    } catch (IOException e1) {

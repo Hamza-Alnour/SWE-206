@@ -39,7 +39,7 @@ public class StudentChoiceController {
         try {
             FXMLLoader fxmlLoaderTournamentSelectionStudentScene = new FXMLLoader(HelloApplication.class.getResource("TournamentSelectionStudent.fxml"));
             Scene tournamentSelectionStudentScene;
-            tournamentSelectionStudentScene = new Scene(fxmlLoaderTournamentSelectionStudentScene.load(), 320, 240);
+            tournamentSelectionStudentScene = new Scene(fxmlLoaderTournamentSelectionStudentScene.load(), 600, 600);
             
             stage.setScene(tournamentSelectionStudentScene);
         } catch (IOException e) {
@@ -61,7 +61,7 @@ public class StudentChoiceController {
             Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow(); // getting the stage through the button
             FXMLLoader fxmlLoaderTournamentSelectionStudentScene = new FXMLLoader(HelloApplication.class.getResource("TournamentSelectionStudent.fxml"));
             Scene tournamentSelectionStudentScene;
-            tournamentSelectionStudentScene = new Scene(fxmlLoaderTournamentSelectionStudentScene.load(), 320, 240);
+            tournamentSelectionStudentScene = new Scene(fxmlLoaderTournamentSelectionStudentScene.load(), 600, 600);
             stage.setScene(tournamentSelectionStudentScene);
         } catch (IOException e) {
             // TODO Auto-generated catch block
