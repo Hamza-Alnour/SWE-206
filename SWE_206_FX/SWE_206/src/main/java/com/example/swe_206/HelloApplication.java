@@ -12,8 +12,11 @@ public class HelloApplication extends Application {
     static ArrayList<Tournament> tournamentList = new ArrayList<>();
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoaderLoginScene = new FXMLLoader(HelloApplication.class.getResource("LoginScene.fxml"));
-        Scene loginScene = new Scene(fxmlLoaderLoginScene.load(), 600, 600);
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("LoginScene.fxml"));
+        Scene loginScene = new Scene(fxmlLoader.load(), 600, 600);
+        fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("TournamentCreateScene.fxml"));
+        //TournamentCreateScene.createTournamentScene = new Scene(fxmlLoaderCreateTournamentScene.load(), 600, 600);
+        
         stage.setTitle("login!");
         stage.setScene(loginScene);
         stage.show();
