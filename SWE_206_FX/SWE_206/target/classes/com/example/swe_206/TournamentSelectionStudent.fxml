@@ -20,8 +20,8 @@
                   <TableView fx:id="tableView" editable="true" prefHeight="386.0" prefWidth="651.0" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="-51.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-54.0" AnchorPane.topAnchor="0.0">
                     <columns>
                       <TableColumn fx:id="nameColumn" prefWidth="75.0" text="Name" />
-                      <TableColumn fx:id="typeColumn" prefWidth="75.0" text="Type" />
-                        <TableColumn fx:id="roundsColumn" prefWidth="75.0" text="Rounds" />
+                      <TableColumn fx:id="participationTypeColumn" prefWidth="75.0" text="Participation Type" />
+                        <TableColumn fx:id="tournamentTypeColumn" prefWidth="75.0" text="Tournament Type" />
                         <TableColumn fx:id="sportColumn" prefWidth="75.0" text="Sport" />
                         <TableColumn fx:id="startDateColumn" prefWidth="75.0" text="Start date" />
                         <TableColumn fx:id="endDateColumn" prefWidth="75.0" text="end date" />

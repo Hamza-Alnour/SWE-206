@@ -40,11 +40,11 @@ public class LoginSceneController {
                 if (id.equals("111") && password.equals("222")) {
                     if (userType.equals("Student")) { //student
                         FXMLLoader fxmlLoaderStudentChoiceScene = new FXMLLoader(HelloApplication.class.getResource("StudentChoice.fxml"));
-                        Scene studentChoiceScene = new Scene(fxmlLoaderStudentChoiceScene.load(), 320, 240);
+                        Scene studentChoiceScene = new Scene(fxmlLoaderStudentChoiceScene.load(), 640, 480);
                         stage.setScene(studentChoiceScene);
                     } else if(userType.equals("Admin")) { // admin
                         FXMLLoader fxmlLoaderHomePageScene = new FXMLLoader(HelloApplication.class.getResource("Home page.fxml"));
-                        Scene homePageScene = new Scene(fxmlLoaderHomePageScene.load(), 320, 240);
+                        Scene homePageScene = new Scene(fxmlLoaderHomePageScene.load(), 640, 480);
                         stage.setScene(homePageScene);
                     }
                     idError.setOpacity(0);

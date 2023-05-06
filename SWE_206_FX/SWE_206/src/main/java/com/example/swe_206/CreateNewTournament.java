@@ -1,11 +1,14 @@
 package com.example.swe_206;
 
+import javafx.fxml.FXML;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 
-public class TournamentCreateScene {
+public class CreateNewTournament {
 	
-	static Scene createTournamentScene;
-
+	static Scene scene;
+    @FXML
+    private static Button createButton;
 /*
 	public Button getButton() {
         return button;
