@@ -29,7 +29,7 @@ public class StudentChoiceController {
     void individualTransferScene(ActionEvent event) {
         selectedTournaments.clear();
         for (Tournament tournament : allTournaments) {
-            if (tournament.getType().equals("Individual")) {
+            if (tournament.getParticipationType().equals("Individual")) {
                 selectedTournaments.add(tournament);;
                 System.out.println("got a selected tournament");
             }
@@ -42,6 +42,7 @@ public class StudentChoiceController {
             tournamentSelectionStudentScene = new Scene(fxmlLoaderTournamentSelectionStudentScene.load(), 320, 240);
             
             stage.setScene(tournamentSelectionStudentScene);
+            stage.setResizable(true);
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -54,7 +55,7 @@ public class StudentChoiceController {
         try {
             selectedTournaments.clear();
             for (Tournament tournament : allTournaments) {
-                if (tournament.getType().equals("Team")) {
+                if (tournament.getParticipationType().equals("Team")) {
                     selectedTournaments.add(tournament);
                 }
             }
@@ -63,6 +64,7 @@ public class StudentChoiceController {
             Scene tournamentSelectionStudentScene;
             tournamentSelectionStudentScene = new Scene(fxmlLoaderTournamentSelectionStudentScene.load(), 320, 240);
             stage.setScene(tournamentSelectionStudentScene);
+            stage.setResizable(true);
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
