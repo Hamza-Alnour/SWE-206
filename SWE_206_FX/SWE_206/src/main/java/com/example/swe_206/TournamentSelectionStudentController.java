@@ -30,7 +30,7 @@ public class TournamentSelectionStudentController implements Initializable {
     private TableColumn<Tournament, Button> registerButttonColumn;
 
     @FXML
-    private TableColumn<Tournament, Integer> roundsColumn;
+    private TableColumn<Tournament, String> tournamentTypeColumn;
 
     @FXML
     private TableColumn<Tournament, String> sportColumn;
@@ -42,13 +42,13 @@ public class TournamentSelectionStudentController implements Initializable {
     private TableView<Tournament> tableView;
 
     @FXML
-    private TableColumn<Tournament, String> typeColumn;
+    private TableColumn<Tournament, String> participationTypeColumn;
 
     private static Tournament selectedTournament;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        StudentChoiceController s= new StudentChoiceController();
+        StudentChoiceController s = new StudentChoiceController();
         ObservableList<Tournament> tournamentList = s.getSelectedTournaments();
         if (tournamentList.size() == 0) {
             System.out.println("empty");
@@ -61,7 +61,7 @@ public class TournamentSelectionStudentController implements Initializable {
                     //enter code that affects the next stage
                     Stage stage = (Stage) ((Node)e.getSource()).getScene().getWindow();
                     selectedTournament = tournament;
-                    if (tournament.getType().equals("Individual")) {
+                    if (tournament.getParticipationType().equals("Individual")) {
                         FXMLLoader fxmlLoaderRegisterScene = new FXMLLoader(HelloApplication.class.getResource("Register Scene.fxml"));
                         Scene registerScene;
                         registerScene = new Scene(fxmlLoaderRegisterScene.load(), 600, 600);
@@ -80,9 +80,9 @@ public class TournamentSelectionStudentController implements Initializable {
         }
         registerButttonColumn.setCellValueFactory(new PropertyValueFactory<Tournament,Button>("button"));
         nameColumn.setCellValueFactory(new PropertyValueFactory<Tournament,String>("name"));
-        typeColumn.setCellValueFactory(new PropertyValueFactory<Tournament,String>("type"));
+        participationTypeColumn.setCellValueFactory(new PropertyValueFactory<Tournament,String>("participationType"));
         sportColumn.setCellValueFactory(new PropertyValueFactory<Tournament,String>("sport"));
-        roundsColumn.setCellValueFactory(new PropertyValueFactory<Tournament,Integer>("rounds"));
+        tournamentTypeColumn.setCellValueFactory(new PropertyValueFactory<Tournament, String>("tournamentType"));
         startDateColumn.setCellValueFactory(new PropertyValueFactory<Tournament,LocalDate>("startDate"));
         endDateColumn.setCellValueFactory(new PropertyValueFactory<Tournament,LocalDate>("endDate"));
         tableView.setItems(tournamentList);
