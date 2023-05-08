@@ -42,7 +42,7 @@ public class LoginSceneController {
             String id = idTextField.getText();
             String password = passwordTextField.getText();
 
-            String userType =  "APITest.checkCredentials(id, password)";
+            String userType =  APITest.checkCredentials(id, password);
 
             if (userType.isEmpty()) {
                 // pass or id wrong

@@ -34,5 +34,28 @@ public class APITest {
         return userType;
     }
 
+    public static String geType(String username) throws IOException {
+        String userType = "";
+        String urlString = "https://us-central1-swe206-221.cloudfunctions.net/app/User" +
+                "?username=" + username;
+        URL url = new URL(urlString);
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        connection.setRequestMethod("GET");
+        int responseCode = connection.getResponseCode();
+        if (responseCode == HttpURLConnection.HTTP_OK) {
+            BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            String response = in.readLine();
+            in.close();
+            if (response.contains("student")) {
+                userType = "Student";
+            } else if (response.contains("admin")) {
+                userType = "Admin";
+            } else {
+                userType = "unknown";
+            }
+        }
+        return userType;
+    }
+
 }
 

@@ -41,25 +41,32 @@ public class TeamForumController implements Initializable {
 
     @FXML
     void checkClicked(ActionEvent event) {
-        Boolean contin = true;
-        for (Helper helper : helperList) {
-            if (helper.getTextField().getText().equals("111")) {
-                helper.setInfo("Player Found");
-            } else {
-                helper.setInfo("Player not found");
-                contin = false;
-            }
-        }
-        if (contin) {
-            nextButton.setDisable(false);
-        }
-        tableView.refresh();
 
+        try {
+            Boolean contin = true;
+            for (Helper helper : helperList) {
+                String type = APITest.geType(helper.getTextField().getText());
+                if (type.equals("Student")) {
+                    helper.setInfo("Player Found");
+                } else {
+                    helper.setInfo("Player not found");
+                    contin = false;
+                }
+
+                if (contin) {
+                    nextButton.setDisable(false);
+                }
+            }
+            tableView.refresh();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
     @FXML
     void nextClicked(ActionEvent event) {
-        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         FXMLLoader fxmlLoaderRegisterScene = new FXMLLoader(HelloApplication.class.getResource("Register Scene.fxml"));
         Scene registerScene;
         try {
@@ -80,11 +87,9 @@ public class TeamForumController implements Initializable {
             helperList.add(new Helper());
             System.out.println("helper added");
         }
-        idColumn.setCellValueFactory(new PropertyValueFactory<Helper,TextField>("textField"));
+        idColumn.setCellValueFactory(new PropertyValueFactory<Helper, TextField>("textField"));
         checkerColumn.setCellValueFactory(new PropertyValueFactory<Helper, String>("info"));
         tableView.setItems(helperList);
     }
 
 }
-
-
