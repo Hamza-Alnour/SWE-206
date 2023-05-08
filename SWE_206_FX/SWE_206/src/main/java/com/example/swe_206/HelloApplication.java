@@ -19,7 +19,7 @@ public class HelloApplication extends Application {
 
         // Load the scene for creating a new tournament
         fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("CreateNewTournament.fxml"));
-        TournamentCreateScene.scene = new Scene(fxmlLoader.load(), 500, 500);
+        //TournamentCreateScene.scene = new Scene(fxmlLoader.load(), 500, 500);
         
         // Set some properties of the stage
         stage.setResizable(false);
