@@ -1,6 +1,8 @@
 package com.example.swe_206;
 
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -14,16 +16,21 @@ import java.io.ObjectInput;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.LinkedList;
 import java.util.Random;
 
 public class HelloApplication extends Application {
     static ArrayList<Tournament> tournamentListOG = new ArrayList<>();
-
+    static ObservableList<String> sportsList = FXCollections.observableArrayList(new ArrayList<String>());
+    static Stage stage;
     @Override
     public void start(Stage stage) throws IOException {
+        HelloApplication.stage = stage;
         // Load the login screen
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("LoginScene.fxml"));
-        Scene loginScene = new Scene(fxmlLoader.load(), 600, 600);
+        LoginSceneController.scene = new Scene(fxmlLoader.load(), 600, 600);
 
         // Load the scene for creating a new tournament
         fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("CreateNewTournament.fxml"));
@@ -32,7 +39,7 @@ public class HelloApplication extends Application {
         // Set some properties of the stage
         stage.setResizable(false);
         stage.setTitle("login!");
-        stage.setScene(loginScene);
+        stage.setScene(LoginSceneController.scene);
         stage.show();
     }
 
@@ -97,6 +104,15 @@ public class HelloApplication extends Application {
             e.printStackTrace();
         }
 
+    }
+
+    public static boolean isNonNegativeInt(String s) {
+        int length = s.length();
+        for(int i = 0; i < length; i++) {
+            if(!Character.isDigit(s.charAt(i)))
+                return false;
+        }
+        return true;
     }
 
 }

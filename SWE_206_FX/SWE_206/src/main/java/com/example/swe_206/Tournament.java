@@ -14,6 +14,7 @@ public class Tournament implements Serializable {
     private int id;
     private int playersPerTeam;
     private ArrayList<Match> matches;
+    private int tournamentSize;
     private ArrayList<Participant> allParticipants;
     private boolean archived;
 
@@ -45,9 +46,10 @@ public class Tournament implements Serializable {
         }
     }
     
-    public Tournament(String name, String participationType, String tournamentType, String sport, int playersPerTeam, LocalDate startDate, LocalDate endDate) {
+    public Tournament(String name, String participationType, String tournamentType, String sport, int tournamentSize, int playersPerTeam, LocalDate startDate, LocalDate endDate) {
         this.name = name;
         this.participationType = participationType;
+        this.tournamentSize = tournamentSize;
         this.tournamentType = tournamentType;
         this.sport = sport;
         this.playersPerTeam = playersPerTeam;
