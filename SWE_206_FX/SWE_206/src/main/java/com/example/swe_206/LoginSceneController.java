@@ -53,11 +53,11 @@ public class LoginSceneController {
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 if (userType.equals("Student")) {
                     FXMLLoader fxmlLoaderStudentChoiceScene = new FXMLLoader(HelloApplication.class.getResource("StudentChoice.fxml"));
-                    Scene studentChoiceScene = new Scene(fxmlLoaderStudentChoiceScene.load(), 320, 240);
+                    Scene studentChoiceScene = new Scene(fxmlLoaderStudentChoiceScene.load(), 600, 600);
                     stage.setScene(studentChoiceScene);
                 } else if (userType.equals("Admin")) {
                     FXMLLoader fxmlLoaderHomePageScene = new FXMLLoader(HelloApplication.class.getResource("Home page.fxml"));
-                    Scene homePageScene = new Scene(fxmlLoaderHomePageScene.load(), 320, 240);
+                    Scene homePageScene = new Scene(fxmlLoaderHomePageScene.load(), 600, 600);
                     stage.setScene(homePageScene);
                 } else { // If userType is still empty, show error messages
                     idError.setOpacity(1);

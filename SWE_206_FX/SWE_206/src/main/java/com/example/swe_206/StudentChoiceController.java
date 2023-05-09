@@ -26,6 +26,9 @@ public class StudentChoiceController {
     private Button teamButton;
 
     @FXML
+    private Button quitButton;
+
+    @FXML
     void individualTransferScene(ActionEvent event) {
         selectedTournaments.clear();
         for (Tournament tournament : allTournaments) {
@@ -71,6 +74,12 @@ public class StudentChoiceController {
         }
 
     }
+
+    @FXML
+    void quitClicked(ActionEvent event) {
+        HelloApplication.saveTournaments("currentTournaments.dat");
+    }
+
     public ObservableList<Tournament> getSelectedTournaments() {
         return selectedTournaments;
     }

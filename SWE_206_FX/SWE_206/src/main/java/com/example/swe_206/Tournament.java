@@ -54,7 +54,21 @@ public class Tournament implements Serializable {
         this.startDate = startDate;
         this.endDate = endDate;
         this.id = HelloApplication.generateUniqueID();
-        HelloApplication.tournamentList.add(this);
+        HelloApplication.tournamentListOG.add(this);
+    }
+
+    public Tournament( SerializableTournament t) {
+        this.name = t.getName();
+        this.participationType = t.getParticipationType();
+        this.tournamentType = t.getTournamentType();
+        this.sport = t.getSport();
+        this.id = t.getId();
+        this.playersPerTeam = t.getPlayersPerTeam();
+        this.matches = t.getMatches();
+        this.allParticipants = t.getAllParticipants();
+        this.archived = t.isArchived();
+        this.startDate = t.getStartDate();
+        this.endDate = t.getEndDate();
     }
 
 
@@ -86,4 +100,14 @@ public class Tournament implements Serializable {
     public Button getButton() {
         return registerButton;
     }
+    public ArrayList<Participant> getAllParticipants() {
+        return allParticipants;
+    }
+    public int getId() {
+        return id;
+    }
+    public ArrayList<Match> getMatches() {
+        return matches;
+    }
+    
 }
