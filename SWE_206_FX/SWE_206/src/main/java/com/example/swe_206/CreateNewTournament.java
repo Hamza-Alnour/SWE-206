@@ -60,12 +60,6 @@ public class CreateNewTournament {
     @FXML // fx:id="warningLabel"
     private Label warningLabel; // Value injected by FXMLLoader
 
-    
-    @FXML
-    void initScene() {
-
-    }
-
     @FXML
     void invokeOnSingle(ActionEvent event) {
         if(!participationTypeRadioButton1.isSelected())
