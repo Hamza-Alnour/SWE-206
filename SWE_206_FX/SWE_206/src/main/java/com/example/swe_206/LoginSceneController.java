@@ -15,12 +15,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
-import javax.mail.MessagingException;
-
 
 public class LoginSceneController {
 
-    static Scene scene;
     @FXML
     private Button LoginButton;
 
@@ -53,33 +50,19 @@ public class LoginSceneController {
                 // Check the userType and load the appropriate scene
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 if (userType.equals("Student")) {
-                    FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("StudentChoice.fxml"));
-                    Scene studentChoiceScene = new Scene(fxmlLoader.load(), 600, 600);
-                    HelloApplication.stage.setScene(studentChoiceScene);
+                    FXMLLoader fxmlLoaderStudentChoiceScene = new FXMLLoader(HelloApplication.class.getResource("StudentChoice.fxml"));
+                    Scene studentChoiceScene = new Scene(fxmlLoaderStudentChoiceScene.load(), 320, 240);
+                    stage.setScene(studentChoiceScene);
                 } else if (userType.equals("Admin")) {
-                    FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Home page.fxml"));
-                    HomePageController.scene = new Scene(fxmlLoader.load(), 621, 433);
-
-                    fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("modifyTournament.fxml"));
-                    SelectTournamentToModify.scene = new Scene(fxmlLoader.load(), 919, 500);
-                    
-                    //SelectTournamentToModify.scene = new Scene(fxmlLoader.load(), 500, 500);
-
-                    //fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("ModificationScene.fxml"));
-                    //ModificationScene.scene = new Scene(fxmlLoader.load(), 500, 500);
-        
-                    
-                    HelloApplication.stage.setScene(HomePageController.scene);
-                    
+                    FXMLLoader fxmlLoaderHomePageScene = new FXMLLoader(HelloApplication.class.getResource("Home page.fxml"));
+                    Scene homePageScene = new Scene(fxmlLoaderHomePageScene.load(), 320, 240);
+                    stage.setScene(homePageScene);
                 } else { // If userType is still empty, show error messages
                     idError.setOpacity(1);
                     passworError.setOpacity(1);
                 }
             }
         } catch (IOException e) {
-            e.printStackTrace();
-        } catch (MessagingException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
