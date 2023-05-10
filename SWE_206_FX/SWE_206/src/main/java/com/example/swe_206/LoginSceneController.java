@@ -47,15 +47,23 @@ public class LoginSceneController {
                 // Check the userType and load the appropriate scene
                 
                 if (userType.equals("Student")) {
-                    FXMLLoader fxmlLoaderStudentChoiceScene = new FXMLLoader(HelloApplication.class.getResource("StudentChoice.fxml"));
-                    Scene studentChoiceScene = new Scene(fxmlLoaderStudentChoiceScene.load(), 600, 600);
+                    FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("StudentChoice.fxml"));
+                    Scene studentChoiceScene = new Scene(fxmlLoader.load(), 600, 600);
                     HelloApplication.stage.setScene(studentChoiceScene);
                 } else if (userType.equals("Admin")) {
-                    //FXMLLoader fxmlLoaderHomePageScene = new FXMLLoader(HelloApplication.class.getResource("homepage.fxml"));
-                    //Scene homePageScene = new Scene(fxmlLoaderHomePageScene.load(), 500, 500);
+                    FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Home page.fxml"));
+                    HomePageController.scene = new Scene(fxmlLoader.load(), 621, 433);
+
+                    fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("modifyTournament.fxml"));
+                    SelectTournamentToModify.scene = new Scene(fxmlLoader.load(), 919, 500);
                     
+                    //SelectTournamentToModify.scene = new Scene(fxmlLoader.load(), 500, 500);
+
+                    //fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("ModificationScene.fxml"));
+                    //ModificationScene.scene = new Scene(fxmlLoader.load(), 500, 500);
+        
                     
-                    HelloApplication.stage.setScene(CreateNewTournament.scene);
+                    HelloApplication.stage.setScene(HomePageController.scene);
                     
                 } else { // If userType is still empty, show error messages
                     idError.setOpacity(1);

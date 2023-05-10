@@ -27,10 +27,10 @@ public class RegisterSceneController {
         
         try {
             conformationText.setOpacity(0);
-            Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow(); // getting the stage through the button
+            
             FXMLLoader fxmlLoaderStudentChoiceScene = new FXMLLoader(HelloApplication.class.getResource("StudentChoice.fxml"));
             Scene studentChoiceScene = new Scene(fxmlLoaderStudentChoiceScene.load(), 600, 600);
-            stage.setScene(studentChoiceScene);
+            HelloApplication.stage.setScene(studentChoiceScene);
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

@@ -6,19 +6,13 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
-import java.io.Serializable;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectInput;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.LinkedList;
 import java.util.Random;
 
 public class HelloApplication extends Application {
@@ -80,9 +74,9 @@ public class HelloApplication extends Application {
         }
 
         Random r = new Random();
-        int randomID = r.nextInt(0, 10000);
+        int randomID = r.nextInt(1000, 10000);
         while (idArray.contains(randomID)) {
-            randomID = r.nextInt(0, 10000);
+            randomID = r.nextInt(1000, 10000);
         }
         return randomID;
 

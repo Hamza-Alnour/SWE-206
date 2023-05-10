@@ -64,7 +64,9 @@ public class CreateNewTournament {
     void invokeOnSingle(ActionEvent event) {
         if(!participationTypeRadioButton1.isSelected())
             return;
+        teamSizeTextField.setText("1");
         teamSizeTextField.setDisable(true);
+        
     }
 
     @FXML
@@ -117,16 +119,18 @@ public class CreateNewTournament {
             if(!HelloApplication.sportsList.contains(sportComboBox.getValue())) {
                 HelloApplication.sportsList.add(sportComboBox.getValue());
             }
-            nameTextField.setText("");
+            nameTextField.setText("playersPerTeam");
+            teamSizeTextField.setText("");
+            teamSizeTextField.setDisable(false);
             sportComboBox.setValue("");
             tournamentSizeTextField.setText("");
             sportComboBox.setValue("");
             sportComboBox.setItems(HelloApplication.sportsList);
             warningLabel.setText("");
-            tournamentTypeRadioButton1.setSelected(false);
-            tournamentTypeRadioButton2.setSelected(true);
-            participationTypeRadioButton2.setSelected(false);
-            participationTypeRadioButton1.setSelected(true);
+            tournamentTypeRadioButton1.setSelected(true);
+            tournamentTypeRadioButton2.setSelected(false);
+            participationTypeRadioButton2.setSelected(true);
+            participationTypeRadioButton1.setSelected(false);
             startDatePicker.setValue(LocalDate.now());
             endDatePicker.setValue(LocalDate.now());
             HelloApplication.stage.setScene(LoginSceneController.scene);
