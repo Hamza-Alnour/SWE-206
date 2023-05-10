@@ -18,7 +18,7 @@ import java.util.Scanner;
 
 
 public class LoginSceneController {
-
+    static Scene scene;
     @FXML
     private Button LoginButton;
 
@@ -55,9 +55,11 @@ public class LoginSceneController {
                     Scene studentChoiceScene = new Scene(fxmlLoaderStudentChoiceScene.load(), 320, 240);
                     stage.setScene(studentChoiceScene);
                 } else if (userType.equals("Admin")) {
-                    FXMLLoader fxmlLoaderHomePageScene = new FXMLLoader(HelloApplication.class.getResource("Home page.fxml"));
-                    Scene homePageScene = new Scene(fxmlLoaderHomePageScene.load(), 320, 240);
-                    stage.setScene(homePageScene);
+                    FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Home page.fxml"));
+                    HomePageController.scene = new Scene(fxmlLoader.load(), 621, 433);
+                    fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("SelectTournamentToModify.fxml"));
+                    SelectTournamentToModify.scene = new Scene(fxmlLoader.load(), 919, 500);
+                    stage.setScene(HomePageController.scene);
                 } else { // If userType is still empty, show error messages
                     idError.setOpacity(1);
                     passworError.setOpacity(1);
