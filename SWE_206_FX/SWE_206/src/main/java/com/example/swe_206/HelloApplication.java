@@ -19,6 +19,7 @@ public class HelloApplication extends Application {
     static ArrayList<Tournament> tournamentListOG = new ArrayList<>();
     static ObservableList<String> sportsList = FXCollections.observableArrayList(new ArrayList<String>());
     static Stage stage;
+    static int loggedInStudentId;
     @Override
     public void start(Stage stage) throws IOException {
         HelloApplication.stage = stage;

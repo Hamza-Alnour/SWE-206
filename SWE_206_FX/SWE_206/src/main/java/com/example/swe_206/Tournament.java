@@ -44,6 +44,7 @@ public class Tournament implements Serializable {
         } else {
             playersPerTeam = 3;
         }
+        this.allParticipants = new ArrayList<>();
     }
     
     public Tournament(String name, String participationType, String tournamentType, String sport, int tournamentSize, int playersPerTeam, LocalDate startDate, LocalDate endDate) {
@@ -56,6 +57,7 @@ public class Tournament implements Serializable {
         this.startDate = startDate;
         this.endDate = endDate;
         this.id = HelloApplication.generateUniqueID();
+        this.allParticipants = new ArrayList<>();
         HelloApplication.tournamentListOG.add(this);
     }
 
@@ -67,10 +69,15 @@ public class Tournament implements Serializable {
         this.id = t.getId();
         this.playersPerTeam = t.getPlayersPerTeam();
         this.matches = t.getMatches();
-        this.allParticipants = t.getAllParticipants();
+        if(t.getAllParticipants() == null) {
+            this.allParticipants = new ArrayList<>();
+        } else {
+            this.allParticipants = t.getAllParticipants();
+        }
         this.archived = t.isArchived();
         this.startDate = t.getStartDate();
         this.endDate = t.getEndDate();
+        
     }
 
 

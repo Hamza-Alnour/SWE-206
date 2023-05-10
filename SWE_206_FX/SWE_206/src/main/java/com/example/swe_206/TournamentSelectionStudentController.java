@@ -44,7 +44,7 @@ public class TournamentSelectionStudentController implements Initializable {
     @FXML
     private TableColumn<Tournament, String> participationTypeColumn;
 
-    private static Tournament selectedTournament;
+    static Tournament selectedTournament;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

@@ -5,7 +5,9 @@ import java.util.ArrayList;
 
 public class Participant implements Serializable {
 
-	private String name;
+	public Participant(int id) {
+		this.id = id;
+	}
 	private int id;
 	private ArrayList<Tournament> currentTournaments;
 	private ArrayList<Tournament> pastTournament;

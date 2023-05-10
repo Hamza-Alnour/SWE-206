@@ -54,6 +54,7 @@ public class LoginSceneController {
                     FXMLLoader fxmlLoaderStudentChoiceScene = new FXMLLoader(HelloApplication.class.getResource("StudentChoice.fxml"));
                     Scene studentChoiceScene = new Scene(fxmlLoaderStudentChoiceScene.load(), 320, 240);
                     stage.setScene(studentChoiceScene);
+                    HelloApplication.loggedInStudentId = Integer.parseInt(id);
                 } else if (userType.equals("Admin")) {
                     FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Home page.fxml"));
                     HomePageController.scene = new Scene(fxmlLoader.load(), 621, 433);

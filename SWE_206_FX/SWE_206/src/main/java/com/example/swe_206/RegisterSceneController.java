@@ -40,6 +40,7 @@ public class RegisterSceneController {
     @FXML
     void RegisterClicked(ActionEvent event) {
         conformationText.setOpacity(1);
+        TournamentSelectionStudentController.selectedTournament.getAllParticipants().add(new Participant(HelloApplication.loggedInStudentId));
     }
 
 }
