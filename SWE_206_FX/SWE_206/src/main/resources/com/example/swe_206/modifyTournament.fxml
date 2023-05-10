@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<<<<<<< HEAD
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+=======
+<?import javafx.scene.control.Button?>
+>>>>>>> 3675a2d9edd5f3346c37f6d8d9efce3ba83814b6
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 
+<<<<<<< HEAD
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="919.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.swe_206.SelectTournamentToModify">
    <children>
       <TableView fx:id="tableView" prefHeight="500.0" prefWidth="919.0">
@@ -19,5 +25,22 @@
             <TableColumn fx:id="buttonCol" editable="false" prefWidth="86.4000244140625" />
         </columns>
       </TableView>
+=======
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="512.0" prefWidth="706.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+    <Button layoutX="108.0" layoutY="373.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="129.0" text="Select tournament" />
+      <Button layoutX="288.0" layoutY="373.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="129.0" text="save" />
+      <Button layoutX="462.0" layoutY="373.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="129.0" text="cancel" />
+      <VBox layoutX="108.0" layoutY="56.0" prefHeight="262.0" prefWidth="118.0">
+         <children>
+            <Button mnemonicParsing="false" prefHeight="63.0" prefWidth="118.0" text="set tournament" />
+            <Button mnemonicParsing="false" prefHeight="58.0" prefWidth="118.0" text="set duration" />
+            <Button mnemonicParsing="false" prefHeight="63.0" prefWidth="118.0" text="add teams" />
+            <Button mnemonicParsing="false" prefHeight="54.0" prefWidth="118.0" text="end" />
+            <Button mnemonicParsing="false" prefHeight="49.0" prefWidth="118.0" text="delete " />
+         </children>
+      </VBox>
+      <VBox layoutX="226.0" layoutY="56.0" prefHeight="262.0" prefWidth="406.0" style="-fx-background-color: gray;" />
+>>>>>>> 3675a2d9edd5f3346c37f6d8d9efce3ba83814b6
    </children>
 </AnchorPane>
