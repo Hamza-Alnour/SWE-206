@@ -1,22 +1,23 @@
 package com.example.swe_206;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
-
 
 public class LoginSceneController {
 
-    static Scene scene;
     @FXML
     private Button LoginButton;
 
@@ -33,6 +34,8 @@ public class LoginSceneController {
 
     @FXML
     void loginAttempt(ActionEvent event) {
+
+
         try {
             String id = idTextField.getText();
             String password = passwordTextField.getText();
@@ -45,18 +48,15 @@ public class LoginSceneController {
                 passworError.setOpacity(1);
             } else {
                 // Check the userType and load the appropriate scene
-                
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 if (userType.equals("Student")) {
                     FXMLLoader fxmlLoaderStudentChoiceScene = new FXMLLoader(HelloApplication.class.getResource("StudentChoice.fxml"));
-                    Scene studentChoiceScene = new Scene(fxmlLoaderStudentChoiceScene.load(), 600, 600);
-                    HelloApplication.stage.setScene(studentChoiceScene);
+                    Scene studentChoiceScene = new Scene(fxmlLoaderStudentChoiceScene.load(), 320, 240);
+                    stage.setScene(studentChoiceScene);
                 } else if (userType.equals("Admin")) {
-                    //FXMLLoader fxmlLoaderHomePageScene = new FXMLLoader(HelloApplication.class.getResource("homepage.fxml"));
-                    //Scene homePageScene = new Scene(fxmlLoaderHomePageScene.load(), 500, 500);
-                    
-                    
-                    HelloApplication.stage.setScene(CreateNewTournament.scene);
-                    
+                    FXMLLoader fxmlLoaderHomePageScene = new FXMLLoader(HelloApplication.class.getResource("Home page.fxml"));
+                    Scene homePageScene = new Scene(fxmlLoaderHomePageScene.load(), 320, 240);
+                    stage.setScene(homePageScene);
                 } else { // If userType is still empty, show error messages
                     idError.setOpacity(1);
                     passworError.setOpacity(1);
