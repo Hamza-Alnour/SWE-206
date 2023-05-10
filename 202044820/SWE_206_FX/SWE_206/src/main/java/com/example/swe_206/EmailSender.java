@@ -23,9 +23,13 @@ import java.util.Properties;
 
 
 public class EmailSender {
+<<<<<<< HEAD
     private static final String SENDER_EMAIL = "";
     private static final String SENDER_PASSWORD = "";
-
+=======
+    private static final String SENDER_EMAIL = "leo20cassedy@gmail.com";
+    private static final String SENDER_PASSWORD = "Jiim@0500678051";
+>>>>>>> origin/main
 
     public static void sendEmail(String recipientEmail, String userType) throws MessagingException {
             // Create email message

@@ -10,7 +10,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import javax.mail.MessagingException;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -65,9 +64,8 @@ public class LoginSceneController {
             }
         } catch (IOException e) {
             e.printStackTrace();
-        } catch (MessagingException e) {
-            throw new RuntimeException(e);
         }
+
 
 
     }
