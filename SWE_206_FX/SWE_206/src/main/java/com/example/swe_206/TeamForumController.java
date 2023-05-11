@@ -37,7 +37,7 @@ public class TeamForumController implements Initializable {
     @FXML
     private TableView<Helper> tableView;
 
-    ObservableList<Helper> helperList = FXCollections.observableArrayList();
+    static ObservableList<Helper> helperList = FXCollections.observableArrayList();
 
     @FXML
     void checkClicked(ActionEvent event) {
@@ -70,6 +70,11 @@ public class TeamForumController implements Initializable {
         FXMLLoader fxmlLoaderRegisterScene = new FXMLLoader(HelloApplication.class.getResource("Register Scene.fxml"));
         Scene registerScene;
         try {
+            RegisterSceneController.registeringStudentIds = new int[helperList.size()];
+            
+            for(int i = 0; i < RegisterSceneController.registeringStudentIds.length; i++) {
+                RegisterSceneController.registeringStudentIds[i] = Integer.parseInt(TeamForumController.helperList.get(i).getTextField().getText());
+            }
             registerScene = new Scene(fxmlLoaderRegisterScene.load(), 600, 600);
             stage.setScene(registerScene);
         } catch (IOException e) {

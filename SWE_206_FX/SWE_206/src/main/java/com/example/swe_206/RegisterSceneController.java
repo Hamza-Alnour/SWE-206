@@ -13,6 +13,8 @@ import javafx.stage.Stage;
 
 public class RegisterSceneController {
 
+    static int[] registeringStudentIds;
+    
     @FXML
     private Button HomeButton;
 
@@ -40,7 +42,14 @@ public class RegisterSceneController {
     @FXML
     void RegisterClicked(ActionEvent event) {
         conformationText.setOpacity(1);
-        TournamentSelectionStudentController.selectedTournament.getAllParticipants().add(new Participant(HelloApplication.loggedInStudentId));
+        if(TournamentSelectionStudentController.selectedTournament.getParticipationType().equals("Team")) {
+            
+            TournamentSelectionStudentController.selectedTournament.getAllParticipants().add(new Team(registeringStudentIds));
+            System.out.printf("Added %d students to the team", registeringStudentIds.length);
+        }
+        else {
+        TournamentSelectionStudentController.selectedTournament.getAllParticipants().add(new Student(HelloApplication.loggedInStudentId));
+        }
     }
 
 }
