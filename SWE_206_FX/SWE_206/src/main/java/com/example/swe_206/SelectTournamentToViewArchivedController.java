@@ -1,4 +1,5 @@
 package com.example.swe_206;
+
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
@@ -11,8 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-
-public class SelectTournamentToModify implements Initializable {
+public class SelectTournamentToViewArchivedController implements Initializable {
 
     static Scene scene;
 
@@ -48,18 +48,19 @@ public class SelectTournamentToModify implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        ObservableList<Tournament> tournamentList = FXCollections.observableArrayList(HelloApplication.tournamentListOG);
+        ObservableList<Tournament> tournamentList = FXCollections.observableArrayList(HelloApplication.tournamentListOGArchived);
         
         if (tournamentList.size() == 0) {
             System.out.println("empty");
         }
         for (Tournament tournament : tournamentList) {
             Button button = tournament.getButton();
-            button.setText("Modify");
+            button.setText("View");
+            
             button.setOnAction(e -> {
                 ModificationScene.selectedTournament = tournament;
                 ModificationScene.init();
-                HelloApplication.stage.setScene(ModificationScene.scene);
+                HelloApplication.stage.setScene(HomePageController.scene); //changeScene to the view but everything is disabled
             });
         
         

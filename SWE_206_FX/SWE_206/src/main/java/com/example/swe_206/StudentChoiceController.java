@@ -3,6 +3,7 @@ package com.example.swe_206;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javafx.application.Platform;
 import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -77,7 +78,8 @@ public class StudentChoiceController {
 
     @FXML
     void quitClicked(ActionEvent event) {
-        HelloApplication.saveTournaments("currentTournaments.dat");
+        HelloApplication.saveTournaments("currentTournaments.dat", HelloApplication.tournamentListOG);
+        Platform.exit();
     }
 
     public ObservableList<Tournament> getSelectedTournaments() {
