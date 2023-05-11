@@ -58,8 +58,8 @@ public class SelectTournamentToViewArchivedController implements Initializable {
             button.setText("View");
             
             button.setOnAction(e -> {
-                ModificationScene.selectedTournament = tournament;
-                ModificationScene.init();
+                ModificationController.selectedTournament = tournament;
+                //ModificationController.init();
                 HelloApplication.stage.setScene(HomePageController.scene); //changeScene to the view but everything is disabled
             });
         
