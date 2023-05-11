@@ -2,6 +2,7 @@ package com.example.swe_206;
 
 import java.io.IOException;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -45,12 +46,15 @@ public class HomePageController {
 
     @FXML
     void quitClicked(ActionEvent event) {
-
+      HelloApplication.saveTournaments("currentTournaments.dat", HelloApplication.tournamentListOG);
+      HelloApplication.saveTournaments("archivedTournaments.dat",HelloApplication.tournamentListOGArchived);
+      Platform.exit();
     }
 
     @FXML
     void viewClicked(ActionEvent event) {
-
+      
+		  HelloApplication.stage.setScene(SelectTournamentToViewArchivedController.scene);
     }
 
 }

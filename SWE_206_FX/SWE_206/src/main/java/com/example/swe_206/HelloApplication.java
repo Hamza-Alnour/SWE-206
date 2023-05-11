@@ -17,6 +17,7 @@ import java.util.Random;
 
 public class HelloApplication extends Application {
     static ArrayList<Tournament> tournamentListOG = new ArrayList<>();
+    static ArrayList<Tournament> tournamentListOGArchived = new ArrayList<>();
     static ObservableList<String> sportsList = FXCollections.observableArrayList(new ArrayList<String>());
     static Stage stage;
     @Override
@@ -28,10 +29,17 @@ public class HelloApplication extends Application {
 
         // Load the scene for creating a new tournament
         fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("CreateNewTournament.fxml"));
-
         CreateNewTournament.scene = new Scene(fxmlLoader.load(), 500, 500);
+        
+        // Load the scene for selecting a tournament to modify
+        fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("modifyTournament.fxml"));
+        SelectTournamentToModify.scene = new Scene(fxmlLoader.load(), 500, 500);
+
+        // Load the scene for selecting a tournament to view
+        fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("SelectTournamentToViewArchived.fxml"));
+        SelectTournamentToViewArchivedController.scene = new Scene(fxmlLoader.load(), 500, 500);
         // Set some properties of the stage
-        stage.setResizable(false);
+        stage.setResizable(true);
         stage.setTitle("login!");
         stage.setScene(LoginSceneController.scene);
         stage.show();
@@ -40,15 +48,25 @@ public class HelloApplication extends Application {
     public static void main(String[] args) {
 
         try (FileInputStream inFile = new FileInputStream("currentTournaments.dat");
-                ObjectInputStream inObj = new ObjectInputStream(inFile);) {
-            Compressor c = (Compressor) inObj.readObject();
+                ObjectInputStream inObj = new ObjectInputStream(inFile);
+                FileInputStream inFileArchive = new FileInputStream("archivedTournaments.dat");
+                ObjectInputStream inObjArchive = new ObjectInputStream(inFileArchive);) {
+            Compressor c = (Compressor) inObj.readObject();          
             ArrayList<SerializableTournament> st = c.getTournamentList();
             ArrayList<Tournament> tournamentList = new ArrayList<>();
             for (SerializableTournament _st : st) {
                 tournamentList.add(new Tournament(_st));
             }
 
+            Compressor cArchived = (Compressor) inObjArchive.readObject();
+            ArrayList<SerializableTournament> stArchived = cArchived.getTournamentList();
+            ArrayList<Tournament> tournamentListArchived = new ArrayList<>();
+            for (SerializableTournament _st : stArchived) {
+                tournamentListArchived.add(new Tournament(_st));
+            }
+
             tournamentListOG = (ArrayList<Tournament>) tournamentList.clone();
+            tournamentListOGArchived = (ArrayList<Tournament>) tournamentListArchived.clone();
             System.out.println(tournamentListOG.size());
             launch();
         } catch (IOException e) {
@@ -82,11 +100,11 @@ public class HelloApplication extends Application {
 
     }
 
-    public static void saveTournaments(String fileName) {
+    public static void saveTournaments(String fileName, ArrayList<Tournament> tList) {
         try (FileOutputStream outFile = new FileOutputStream(fileName);
                 ObjectOutputStream outObj = new ObjectOutputStream(outFile);) {
             ArrayList<SerializableTournament> t = new ArrayList<>();
-            for (Tournament tour : tournamentListOG) {
+            for (Tournament tour : tList) {
                 t.add(new SerializableTournament(tour));
             }
             Compressor c = new Compressor(t);
