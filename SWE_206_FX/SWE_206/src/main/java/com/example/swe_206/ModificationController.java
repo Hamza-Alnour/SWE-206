@@ -53,11 +53,11 @@ public class ModificationController implements Initializable {
                 selectedTournament.setId(id);
                 selectedTournament.setName(name);
                 selectedTournament.setPlayersPerTeam(teamSize);
-                selectedTournament.setLastModifiedDate(LocalDate.now());
-                HelloApplication.showAlert("Tournament updated successfully.");
+                //selectedTournament.setLastModifiedDate(LocalDate.now());
+                //HelloApplication.showAlert("Tournament updated successfully.");
                 HelloApplication.stage.setScene(SelectTournamentToModify.scene);
             } catch (NumberFormatException e) {
-                HelloApplication.showAlert("Please enter valid values for ID and Team Size fields.");
+                //HelloApplication.showAlert("Please enter valid values for ID and Team Size fields.");
             }
         }
     }

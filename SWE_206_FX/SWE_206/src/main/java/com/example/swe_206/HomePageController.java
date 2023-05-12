@@ -36,7 +36,7 @@ public class HomePageController {
     void editClicked(ActionEvent event) {
       FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("modifyTournament.fxml"));
       try {
-        ModificationScene.scene = new Scene(fxmlLoader.load(), 800, 500);
+        ModificationController.scene = new Scene(fxmlLoader.load(), 800, 500);
       } catch (IOException e) {
         // TODO Auto-generated catch block
         e.printStackTrace();

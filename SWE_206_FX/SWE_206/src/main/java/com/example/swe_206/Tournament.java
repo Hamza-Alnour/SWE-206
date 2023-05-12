@@ -118,5 +118,13 @@ public class Tournament implements Serializable {
     public ArrayList<Match> getMatches() {
         return matches;
     }
-    
+    public void setId(int id) {
+        this.id = id;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public void setPlayersPerTeam(int playersPerTeam) {
+        this.playersPerTeam = playersPerTeam;
+    }
 }

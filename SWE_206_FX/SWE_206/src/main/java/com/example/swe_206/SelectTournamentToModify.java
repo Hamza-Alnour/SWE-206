@@ -57,9 +57,9 @@ public class SelectTournamentToModify implements Initializable {
             Button button = tournament.getButton();
             button.setText("Modify");
             button.setOnAction(e -> {
-                ModificationScene.selectedTournament = tournament;
-                ModificationScene.init();
-                HelloApplication.stage.setScene(ModificationScene.scene);
+                ModificationController.selectedTournament = tournament;
+                //ModificationController.init();
+                HelloApplication.stage.setScene(ModificationController.scene);
             });
         
         
