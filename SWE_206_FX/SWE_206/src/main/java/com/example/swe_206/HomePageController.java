@@ -48,6 +48,7 @@ public class HomePageController {
     void quitClicked(ActionEvent event) {
       HelloApplication.saveTournaments("currentTournaments.dat", HelloApplication.tournamentListOG);
       HelloApplication.saveTournaments("archivedTournaments.dat",HelloApplication.tournamentListOGArchived);
+      HelloApplication.saveSports();
       Platform.exit();
     }
 

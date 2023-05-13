@@ -1,9 +1,12 @@
 package com.example.swe_206;
 
+import java.net.URL;
 import java.time.LocalDate;
+import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -13,7 +16,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 
-public class CreateNewTournament {
+public class CreateNewTournament implements Initializable {
     static Scene scene;
     @FXML // fx:id="A"
     private ToggleGroup A; // Value injected by FXMLLoader
@@ -79,7 +82,7 @@ public class CreateNewTournament {
     @FXML
     void cancelButtonAction(ActionEvent event) {
         // Change this to homepage when implemented
-        HelloApplication.stage.setScene(LoginSceneController.scene);
+        HelloApplication.stage.setScene(HomePageController.scene);
     }
     @FXML
     void createButtonAction(ActionEvent event) {
@@ -125,7 +128,7 @@ public class CreateNewTournament {
             sportComboBox.setValue("");
             tournamentSizeTextField.setText("");
             sportComboBox.setValue("");
-            sportComboBox.setItems(HelloApplication.sportsList);
+            //sportComboBox.setItems(HelloApplication.sportsList);
             warningLabel.setText("");
             tournamentTypeRadioButton1.setSelected(true);
             tournamentTypeRadioButton2.setSelected(false);
@@ -133,9 +136,15 @@ public class CreateNewTournament {
             participationTypeRadioButton1.setSelected(false);
             startDatePicker.setValue(LocalDate.now());
             endDatePicker.setValue(LocalDate.now());
-            HelloApplication.stage.setScene(LoginSceneController.scene);
+            HelloApplication.stage.setScene(HomePageController.scene);
         }
         
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        // TODO Auto-generated method stub
+        sportComboBox.setItems(HelloApplication.sportsList);
     }
     
     

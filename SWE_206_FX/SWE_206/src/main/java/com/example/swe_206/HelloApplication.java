@@ -13,12 +13,13 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
 public class HelloApplication extends Application {
     static ArrayList<Tournament> tournamentListOG = new ArrayList<>();
     static ArrayList<Tournament> tournamentListOGArchived = new ArrayList<>();
-    static ObservableList<String> sportsList = FXCollections.observableArrayList(new ArrayList<String>());
+    static ObservableList<String> sportsList = FXCollections.observableArrayList(Arrays.asList("Football", "Volleyball", "Basketball", "Tennis"));
     static Stage stage;
     static int loggedInStudentId;
     @Override
@@ -65,11 +66,10 @@ public class HelloApplication extends Application {
             for (SerializableTournament _st : stArchived) {
                 tournamentListArchived.add(new Tournament(_st));
             }
-
             tournamentListOG = (ArrayList<Tournament>) tournamentList.clone();
             tournamentListOGArchived = (ArrayList<Tournament>) tournamentListArchived.clone();
             System.out.println(tournamentListOG.size());
-            launch();
+            
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -78,6 +78,25 @@ public class HelloApplication extends Application {
             e.printStackTrace();
         }
 
+        try (ObjectInputStream inObj = new ObjectInputStream(new FileInputStream("savedSports.dat"));) {
+            
+            while (true) {
+                String sport = (String) inObj.readObject();
+                if(!sportsList.contains(sport)) {
+                    sportsList.add(sport);
+                }
+            }
+            
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            System.out.println(sportsList);
+            
+        } catch (ClassNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        
+        launch();
     }
 
     public ArrayList<Tournament> getTournamentList() {
@@ -116,7 +135,19 @@ public class HelloApplication extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
 
+    public static void saveSports() {
+        try (ObjectOutputStream objOutStream = new ObjectOutputStream(new FileOutputStream("savedSports.dat"));) {
+            for (String sport : sportsList) {
+                objOutStream.writeObject(sport);
+                System.out.println("Saved " + sport);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static boolean isNonNegativeInt(String s) {
