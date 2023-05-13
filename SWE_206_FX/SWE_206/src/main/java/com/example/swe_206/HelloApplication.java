@@ -35,7 +35,7 @@ public class HelloApplication extends Application {
         
         // Load the scene for selecting a tournament to modify
         fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("modifyTournament.fxml"));
-        SelectTournamentToModify.scene = new Scene(fxmlLoader.load(), 500, 500);
+        SelectTournamentToModify.scene = new Scene(fxmlLoader.   load(), 500, 500);
 
         // Load the scene for selecting a tournament to view
         fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("SelectTournamentToViewArchived.fxml"));
